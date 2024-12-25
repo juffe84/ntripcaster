@@ -21,6 +21,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        submodules: true  # Tämä varmistaa, että alimoduulit haetaan automaattisesti
+
+    - name: Initialize submodules
+      run: git submodule update --init
 
     - name: Set up CodeQL
       uses: github/codeql-action/init@v2
