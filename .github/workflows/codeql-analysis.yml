@@ -17,13 +17,22 @@ jobs:
       security-events: write
     strategy:
       matrix:
-        language: [ 'c' ]
+        language: [ 'cpp' ]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - name: Initialize CodeQL
+
+    - name: Set up CodeQL
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
+
+    - name: Build the project
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make
+
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
