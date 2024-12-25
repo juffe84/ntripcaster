@@ -7,7 +7,7 @@
 #ifdef _WIN32
 # include "evwrap.h"
 #else
-# include <ev.h>
+# include "libev/ev.h"
 #endif
 #include <stdio.h>
 #include <string.h>
